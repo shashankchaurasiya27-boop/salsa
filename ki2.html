@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Permanent License of Girlfriend 💖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        :root {
+            --accent: #ff4d88;
+            --bg-light: linear-gradient(135deg, #ffd6e8, #ffeaf4);
+            --bg-dark: linear-gradient(135deg, #1a1a1a, #2c0f1f);
+            --card-light: #fff;
+            --card-dark: #1f1f1f;
+            --text-light: #333;
+            --text-dark: #f5f5f5;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: 0.5s;
+        }
+
+        body.dark {
+            background: var(--bg-dark);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* 💌 Floating Hearts */
+        .heart {
+            position: absolute;
+            bottom: -20px;
+            font-size: 18px;
+            animation: float 6s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-120vh) scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        /* 🔒 Password Screen */
+        .lock {
+            background: var(--card-light);
+            padding: 28px;
+            border-radius: 24px;
+            width: 320px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        body.dark .lock {
+            background: var(--card-dark);
+            color: var(--text-dark);
+        }
+
+        .lock input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: none;
+            margin: 14px 0;
+            font-size: 14px;
+        }
+
+        .lock button {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 999px;
+            cursor: pointer;
+        }
+
+        /* 💳 License Card */
+        .container {
+            perspective: 1200px;
+        }
+
+        .card {
+            width: 360px;
+            height: 560px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
+        }
+
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            padding: 22px;
+            border-radius: 24px;
+            background: var(--card-light);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            backface-visibility: hidden;
+            box-sizing: border-box;
+        }
+
+        body.dark .page {
+            background: var(--card-dark);
+            color: var(--text-dark);
+        }
+
+        .back {
+            transform: rotateY(180deg);
+        }
+
+        .badge {
+            background: var(--accent);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 12px;
+            display: inline-block;
+        }
+
+        .photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            margin: 14px auto;
+            background: url('assets/girlfriend.jpg') center/cover no-repeat;
+        }
+
+        h1 {
+            color: var(--accent);
+            font-size: 22px;
+        }
+
+        .section {
+            background: rgba(255, 77, 136, 0.08);
+            padding: 14px;
+            border-radius: 16px;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        .button {
+            display: block;
+            background: var(--accent);
+            color: #fff;
+            padding: 12px;
+            border-radius: 999px;
+            text-decoration: none;
+            margin: 10px auto;
+            font-size: 14px;
+        }
+
+        .link {
+            color: var(--accent);
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* 🎯 Custom Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--card-light);
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 340px;
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        body.dark .modal-content {
+            background: var(--card-dark);
+            color: var(--text-dark);
+        }
+
+        .modal-content h2 {
+            color: var(--accent);
+            margin: 0 0 16px 0;
+            font-size: 20px;
+        }
+
+        .modal-content p {
+            font-size: 16px;
+            margin: 0 0 24px 0;
+            line-height: 1.6;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--accent);
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 77, 136, 0.1);
+        }
+
+        .modal-button {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: transform 0.2s;
+        }
+
+        .modal-button:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 🎵 Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="assets/music/romantic-song.mp3" type="audio/mpeg">
+        <!-- Download your favorite romantic song as MP3 and save it in the assets/music/ folder -->
+        <!-- Rename it to "romantic-song.mp3" or update the src path above -->
+    </audio>
+
+    <!-- 🔒 PASSWORD SCREEN -->
+    <div class="lock" id="lock">
+        <h2>🔒 Private License</h2>
+        <p>Only the real girlfriend can unlock 💖</p>
+        <input type="password" id="password" placeholder="Hint: Her name 😉">
+        <button onclick="unlock()">Unlock 💕</button>
+        <p id="error" style="color:red;font-size:12px;"></p>
+    </div>
+
+    <!-- 💳 LICENSE -->
+    <div class="container hidden" id="license">
+        <div class="card" id="card">
+
+            <!-- FRONT -->
+            <div class="page">
+                <div class="badge">Permanent License 💖</div>
+                <div class="photo"></div>
+                <h1>License of Girlfriend</h1>
+
+                <div class="section">
+                    <strong>Name:</strong> Palak 🌸<br>
+                    <strong>DOB:</strong> 27 August 2007<br>
+                    <strong>License No:</strong> PLK-1909-FOREVER
+                </div>
+
+                <div class="section">
+                    ✨ The One<br>
+                    ✨ My Favourite Person<br>
+                    ✨ My Safe Place
+                </div>
+
+                <a class="button" href="https://wa.me/?text=I%20love%20you%20❤️">
+                    💬 Send “I love you”
+                </a>
+
+                <div class="link" onclick="showGPS()">📍 Track Location</div>
+                <div class="link" onclick="flip()">Flip License ➜</div>
+            </div>
+
+            <!-- BACK -->
+            <div class="page back">
+                <div class="badge">Rules & Love 📜</div>
+
+                <div class="section">
+                    📞 Lost? Sad? Missing me?<br><br>
+                    <strong>Call me immediately.</strong><br>
+                    I’ll come running 💗
+                </div>
+
+                <div class="section">
+                    🖤 Anniversary<br>
+                    <strong>19 November 2025</strong>
+                </div>
+
+                <div class="section">
+                    ✔ Unlimited hugs<br>
+                    ✔ Snacks mandatory<br>
+                    ✔ Arguments end with <br>
+                    “ I'm gonna cut my MEOW wala nail's ”<br>
+                    ✔ Valid forever ♾️<br>
+                    ✔ Always in my heart 💖<br>
+                    <br>
+                    ### ALWAYS BE MY GOOD GURL ###<br>
+                    (Palak)
+
+                </div>
+
+                <div class="link" onclick="toggleTheme()">🌙 Toggle Theme</div>
+                <div class="link" onclick="flip()">⬅ Back</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 🎯 Custom Modal -->
+    <div class="modal" id="locationModal" onclick="closeModalOnOutside(event)">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <h2>📍 Location Found</h2>
+            <p>She's already in my heart 💖</p>
+            <button class="modal-button" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        /* 🔒 Password */
+        function unlock() {
+            const pass = document.getElementById("password").value.toLowerCase();
+            if (pass === "palak") {
+                document.getElementById("lock").classList.add("hidden");
+                document.getElementById("license").classList.remove("hidden");
+
+                // 🎵 Play background music after user interaction
+                const music = document.getElementById("bgMusic");
+                if (music && music.querySelector('source').src) {
+                    music.play().catch(e => console.log("Music autoplay blocked:", e));
+                }
+            } else {
+                document.getElementById("error").innerText = "Wrong 😝 Try again";
+            }
+        }
+
+        /* 💳 Card */
+        function flip() {
+            document.getElementById("card").classList.toggle("flipped");
+        }
+        function toggleTheme() {
+            document.body.classList.toggle("dark");
+        }
+
+        /* 📍 GPS Joke - Custom Modal */
+        function showGPS() {
+            document.getElementById("locationModal").classList.add("show");
+        }
+
+        function closeModal() {
+            document.getElementById("locationModal").classList.remove("show");
+        }
+
+        function closeModalOnOutside(event) {
+            if (event.target.id === "locationModal") {
+                closeModal();
+            }
+        }
+
+        /* 💌 Floating Hearts */
+        setInterval(() => {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerText = "💖";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = Math.random() * 10 + 14 + "px";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }, 500);
+    </script>
+
+</body>
+
+</html>
